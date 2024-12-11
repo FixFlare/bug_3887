@@ -1,0 +1,15 @@
+[project]
+name = "bug_3887"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "FixFlare", email = "FixFlare"},
+]
+dependencies = ["litestar[standard]>=2.13.0", "aioredis>=2.0.1"]
+requires-python = "==3.10.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false

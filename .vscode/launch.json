@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Server (bug_3887)",
+            "console": "integratedTerminal",
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "Application st(a)rtup complete.",
+                "uriFormat": "http://loc%slhost:8081/api/schema/swagger"
+            },
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}/bug_3887/src/bug_3887",
+            "envFile": "${workspaceFolder}/bug_3887/.env",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/bug_3887/.venv/Lib/site-packages"
+            },
+            "args": [
+                "app:app",
+                "--reload",
+                "--port",
+                "8081",
+                "--host",
+                "0.0.0.0"
+            ]
+        },
+    ]
+}

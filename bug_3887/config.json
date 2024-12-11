@@ -1,0 +1,47 @@
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes/bug_3887"
+        }
+    },
+    "routes": {
+        "bug_3887": [
+            {
+                "match": {
+                    "host": "localhost",
+                    "uri": [
+                        "/api/*",
+                        "/api"
+                    ]
+                },
+                "action": {
+                    "pass": "applications/bug_3887-server"
+                }
+            },
+            {
+                "match": {
+                    "host": "localhost"
+                },
+                "action": {
+                    "share": "/home/YOURUSERNAME/bug_3887/src/bug_3887/public$uri",
+                    "fallback": {
+                        "share": "/home/YOURUSERNAME/bug_3887/src/bug_3887/public/index.html"
+                    }
+                }
+            }
+        ]
+    },
+    "applications": {
+        "bug_3887-server": {
+            "type": "python 3.10",
+            "home": "/home/YOURUSERNAME/bug_3887/.venv/",
+            "path": "/home/YOURUSERNAME/bug_3887/src/bug_3887/",
+            "module": "app",
+            "callable": "app",
+            "stderr": "/home/YOURUSERNAME/bug_3887.log",
+            "user": "nginx",
+            "group": "www-data",
+            "processes": 1
+        }
+    }
+}
